@@ -4,6 +4,7 @@ import com.banu.MonolitSpotify.dto.response.FindAllUserProfileResponseDto;
 import com.banu.MonolitSpotify.repository.entity.UserProfile;
 import com.banu.MonolitSpotify.repository.view.ViewUserProfile;
 import com.banu.MonolitSpotify.utility.enums.State;
+import com.banu.MonolitSpotify.utility.enums.UserType;
 import org.apache.catalina.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -148,5 +149,12 @@ public interface UserProfileRepository extends JpaRepository<UserProfile,Long> {
 
 boolean existsByUserName(String username);
 
+//@Query("SELECT COUNT (u)>0 FROM UserProfile u WHERE u.userType='ARTIST' AND u.id= ?1")
+//boolean isArtist(Long artistsId);
+
+boolean existsByIdAndUserType(Long id, UserType userType);
 
 }
+
+
+

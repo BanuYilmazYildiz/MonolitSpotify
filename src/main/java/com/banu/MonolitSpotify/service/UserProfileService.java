@@ -7,6 +7,7 @@ import com.banu.MonolitSpotify.exception.MonolitSpotifyException;
 import com.banu.MonolitSpotify.repository.UserProfileRepository;
 import com.banu.MonolitSpotify.repository.entity.UserProfile;
 import com.banu.MonolitSpotify.utility.enums.State;
+import com.banu.MonolitSpotify.utility.enums.UserType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -108,5 +109,13 @@ public class UserProfileService {
 //        });
 //         return result;
 //        return repository.findAllFromUserProfile();
+    }
+
+    public boolean existById(Long artistsId) {
+        return repository.existsById(artistsId);
+    }
+
+    public boolean isArtist(Long artistsId) {
+        return repository.existsByIdAndUserType(artistsId, UserType.ARTIST);
     }
 }
